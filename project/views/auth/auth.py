@@ -30,10 +30,6 @@ class AuthView(Resource):
         """
         Log in user
         """
-        # data = request.json
-        #
-        # if data.get('email') and data.get('password'):
-        #     return users_service.check(email=data.get('email'), password=data.get('password')), 200
         data = request.json
 
         email = data.get('email', None)

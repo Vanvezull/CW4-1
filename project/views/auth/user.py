@@ -21,13 +21,13 @@ class UserView(Resource):
 
         return users_service.get_by_email(email)
 
-    @api.marshal_with(user, as_list=True, code=200, description='OK')
     @auth_required
     def patch(self):
         token = request.headers["Authorization"].split("Bearer ")[-1]
         data = request.json
         email = get_email_by_token(request.headers)
-        return users_service.update_user(email, data)
+        users_service.update_user(email, data)
+        return "Пользователь обновлен", 200
 
 
 @api.route('/password/')
@@ -40,6 +40,8 @@ class LoginView(Resource):
         data = request.json
         token = request.headers["Authorization"].split("Bearer ")[-1]
 
-        return users_service.update_password(data=data, token=token)
+        users_service.update_password(**data)
+
+        return "Пароль обновлен", 200
 
 

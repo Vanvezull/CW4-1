@@ -33,16 +33,6 @@ def compare_password(password_hash, other_password):
     return password_hash == generate_password_hash(other_password)
 
 
-def update_token(refresh_token):
-    data = jwt.decode(refresh_token, key=current_app.config['SECRET_KEY'],
-                      algorithms=current_app.config['ALGORITHM'])
-
-    email = data.get('email')
-    password = data.get('password')
-
-    return auth_service.generate_token(email=email, password=password, is_refresh=True)
-
-
 def get_data_by_token(access_token):
     data = jwt.decode(access_token, key=current_app.config['SECRET_KEY'],
                       algorithms=current_app.config['ALGORITHM'])
