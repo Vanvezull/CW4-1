@@ -10,7 +10,7 @@ pip install -r requirements.dev.txt
 
 - Создание моделей (очистит БД и создаст все модели, указанные в импорте)
 ```shell
-python create_tables.py
+
 ```
 
 - Загрузка данных в базу
