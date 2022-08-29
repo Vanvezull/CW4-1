@@ -71,4 +71,4 @@ class UsersService:
 
     def get_user_by_token(self, token):
         data = get_data_by_token(token)
-        return self.get_user_by_email(data.get('email'))
+        return self.get_by_email(data.get('email'))
